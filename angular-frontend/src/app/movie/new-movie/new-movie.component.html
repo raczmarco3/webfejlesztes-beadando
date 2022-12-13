@@ -1,0 +1,27 @@
+<h1>Add Movie: </h1>
+
+<form ngNativeValidate  [formGroup]="addMovieForm" #savestudent (ngSubmit)="onSubmit()" *ngIf="genres.length > 0">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" formControlName="title" required>
+
+    <label for="genre">Genre:</label>
+    <select id="genre" name="genre" formControlName="genre" required>
+        <option *ngFor="let genre of genres" value="{{genre.id}}">{{genre.name}}</option>
+    </select>
+
+    <label for="length">Length (in minutes):</label>
+    <input type="number" name="length" id="length" formControlName="length" required>
+
+    <label for="releaseYear">Release Year:</label>
+    <input type="number" id="releaseYear" name="releaseYear" formControlName="releaseYear" min="1900" max="9999" required>
+
+    <p>
+        <button type="submit">Add</button>  
+    </p> 
+</form>
+
+<p *ngIf="processing && jsonContent">Adding...</p>
+<p *ngIf="genres.length == 0 && !processing">You need atleast 1 Genre to add a Movie!</p>
+<p *ngIf="msg">{{msg}}</p>
+
+<a href="/movies" class="back_link">Back to Movies</a>

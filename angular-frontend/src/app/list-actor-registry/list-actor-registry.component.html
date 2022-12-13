@@ -1,0 +1,26 @@
+<h1>{{actor.name}} Movies: </h1>
+
+<table *ngIf="actor">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Length</th>
+        <th>Release Year</th>
+    </tr>
+    <tr *ngIf="movies.length < 1 && !isFetching">
+        <td colspan="5">No Movie Available!</td>
+    </tr>    
+    <tr *ngIf="isFetching">
+        <td colspan="5">Loading..</td>
+    </tr>
+    <tr *ngFor="let movie of movies">
+        <td>{{movie.id}}</td>
+        <td>{{movie.title}}</td>
+        <td>{{movie.genre.name}}</td>
+        <td>{{movie.length}}</td>
+        <td>{{movie.releaseYear}}</td>
+    </tr>
+</table>
+<p *ngIf="msg">{{msg}}</p>
+<a href="/movie/add" class="link_button">Add Movie</a>

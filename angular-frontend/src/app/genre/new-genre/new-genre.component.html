@@ -1,0 +1,14 @@
+<h1>Add Genre:</h1>
+<form [formGroup]="addGenre" (ngSubmit)="onSubmit()">
+    <label for="name">Name:</label>
+    <input type="text" formControlName="name" id="name">
+    <p>
+        <button type="submit" [disabled]="!addGenre.valid">Add</button>    
+    </p>    
+</form>
+
+<p *ngIf="processing">Adding...</p>
+<p *ngIf="msg">{{msg}}</p>
+<p *ngIf="!msg && !processing && submit">Database Down!</p>
+
+<a href="/genres" class="back_link">Back to Genres</a>

@@ -1,0 +1,22 @@
+<h1>Add Actor:</h1>
+
+<form ngNativeValidate  [formGroup]="addActorForm" #savestudent (ngSubmit)="onSubmit()">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" formControlName="name" required>
+
+    <label for="birthDate">Birth Date::</label>
+    <input type="date" name="birthDate" id="birthDate" formControlName="birthDate" required>
+
+    <label for="birthPlace">Birthplace:</label>
+    <input type="text" id="birthPlace" name="birthPlace" formControlName="birthPlace" required>
+
+    <p>
+        <button type="submit">Add</button>  
+    </p> 
+</form>
+
+<p *ngIf="processing">Adding...</p>
+<p *ngIf="msg">{{msg}}</p>
+<p *ngIf="!msg && !processing && submit">Database Down!</p>
+
+<a href="/actors" class="back_link">Back to Actors</a>

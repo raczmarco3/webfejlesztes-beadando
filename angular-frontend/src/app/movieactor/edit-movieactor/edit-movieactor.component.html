@@ -1,0 +1,23 @@
+<h1>Add Movie Actor:</h1>
+
+<form ngNativeValidate  [formGroup]="editMovieActorForm" #savestudent (ngSubmit)="onSubmit()" *ngIf="movies.length > 0 && actors.length > 0">
+    <label for="movie">Movie:</label>
+    <select id="movie" name="movie" formControlName="movie" [(ngModel)]="movieActor.movie.id" required>
+        <option *ngFor="let movie of movies" value="{{movie.id}}">{{movie.title}}</option>
+    </select>
+
+    <label for="actor">Actor:</label>
+    <select id="actor" name="actor" formControlName="actor" [(ngModel)]="movieActor.actor.id" required>
+        <option *ngFor="let actor of actors" value="{{actor.id}}">{{actor.name}}</option>
+    </select>
+
+    <p>
+        <button type="submit">Add</button>  
+    </p> 
+</form>
+
+<p *ngIf="processing && jsonContent">Adding...</p>
+<p *ngIf="movies.length == 0 || actors.length == 0 && !msg && !processing">You need atleast 1 Movie and 1 Actor to edit a registry!</p>
+<p *ngIf="msg">{{msg}}</p>
+
+<a href="/movieactors" class="back_link">Back to Movie Actors</a>

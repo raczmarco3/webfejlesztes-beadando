@@ -1,0 +1,28 @@
+<h1>Movies: </h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Length</th>
+        <th>Release Year</th>
+        <th class="action_button_column"></th>
+        <th class="action_button_column"></th>
+    </tr>
+    <tr *ngIf="movies.length < 1 && !isFetching">
+        <td colspan="7">No Movie Available!</td>
+    </tr>    
+    <tr *ngIf="isFetching">
+        <td colspan="7">Loading..</td>
+    </tr>
+    <tr *ngFor="let movie of movies">
+        <td>{{movie.id}}</td>
+        <td><a href="/movie/{{movie.id}}/actors">{{movie.title}}</a></td>
+        <td>{{movie.genre.name}}</td>
+        <td>{{movie.length}}</td>
+        <td>{{movie.releaseYear}}</td>
+        <td><a href="/movie/delete/{{movie.id}}" class="action_button">Delete</a></td>
+        <td><a href="/movie/edit/{{movie.id}}" class="action_button">Edit</a></td>
+    </tr>
+</table>
+<a href="/movie/add" class="link_button">Add Movie</a>

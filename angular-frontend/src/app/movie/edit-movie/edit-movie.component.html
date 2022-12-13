@@ -1,0 +1,29 @@
+<h1>Edit Movie:</h1>
+
+<form ngNativeValidate  [formGroup]="addMovieForm" #savestudent (ngSubmit)="onSubmit()" *ngIf="movie && genres.length > 0">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" formControlName="title" [(ngModel)]="movie.title" required>
+
+    <label for="genre">Genre:</label>
+    <select id="genre" name="genre" formControlName="genre" [(ngModel)]="movie.genre.id" required>
+        <option *ngFor="let genre of genres" value="{{genre.id}}">{{genre.name}}</option>
+    </select>
+
+    <label for="length">Length (in minutes):</label>
+    <input type="number" name="length" id="length" formControlName="length" [(ngModel)]="movie.length" required>
+
+    <label for="releaseYear">Release Year:</label>
+    <input type="number" id="releaseYear" name="releaseYear" formControlName="releaseYear" 
+        [(ngModel)]="movie.releaseYear" min="1900" max="9999" required>
+
+    <p>
+        <button type="submit">Edit</button>  
+    </p> 
+</form>
+
+<p *ngIf="isFetching && !rror">Loading...</p>
+<p *ngIf="genres.length == 0 && rror && movie">You need atleast 1 Genre to edit a Movie!</p>
+<p *ngIf="!movie && !isFetching && !msg">Database Down!</p>
+<p *ngIf="msg">{{msg}}</p>
+
+<a href="/movies" class="back_link">Back to Movies</a>

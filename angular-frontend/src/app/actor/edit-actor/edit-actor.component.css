@@ -1,0 +1,15 @@
+input[type=text], input[type=number], input[type=date] {
+    width: -webkit-fill-available;
+    padding: 5px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+button {
+    padding: 8px;
+    background-color: cornflowerblue;
+    color: white;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #4881ea;
+}  

@@ -1,0 +1,6 @@
+<h1>Deleting Actor:</h1>
+<p *ngIf="processing">Processing...</p>
+<p *ngIf="msg">{{msg}}</p>
+<p *ngIf="!msg && !processing">Database Down!</p>
+
+<a href="/actors" class="back_link">Back to Actors</a>

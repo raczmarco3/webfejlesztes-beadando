@@ -1,0 +1,29 @@
+<h1>Actors:</h1>
+
+<table *ngIf="!msg">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Birth Date</th>
+        <th>Birthplace</th>
+        <th class="action_button_column"></th>
+        <th class="action_button_column"></th>
+    </tr>
+    <tr *ngIf="actors.length < 1 && !isFetching">
+        <td colspan="6">No Actors Available!</td>
+    </tr>    
+    <tr *ngIf="isFetching">
+        <td colspan="6">Loading..</td>
+    </tr>
+    <tr *ngFor="let actor of actors">
+        <td>{{actor.id}}</td>
+        <td><a href="/actor/{{actor.id}}/movies">{{actor.name}}</a></td>
+        <td>{{actor.birthDate}}</td>
+        <td>{{actor.birthPlace}}</td>
+        <td><a href="/actor/delete/{{actor.id}}" class="action_button">Delete</a></td>
+        <td><a href="/actor/edit/{{actor.id}}" class="action_button">Edit</a></td>
+    </tr>        
+</table>
+<p *ngIf="msg">{{msg}}</p>
+
+<a href="/actor/add" class="link_button">Add Actor</a>

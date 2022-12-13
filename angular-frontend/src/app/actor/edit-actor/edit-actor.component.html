@@ -1,0 +1,22 @@
+<h1>Edit Actor:</h1>
+
+<form ngNativeValidate  [formGroup]="editActorForm" #savestudent (ngSubmit)="onSubmit()" *ngIf="actor">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" formControlName="name" [(ngModel)]="actor.name" required>
+
+    <label for="birthDate">Birth Date::</label>
+    <input type="date" name="birthDate" id="birthDate" formControlName="birthDate" [(ngModel)]="actor.birthDate" required>
+
+    <label for="birthPlace">Birthplace:</label>
+    <input type="text" id="birthPlace" name="birthPlace" formControlName="birthPlace" [(ngModel)]="actor.birthPlace" required>
+
+    <p>
+        <button type="submit">Add</button>  
+    </p> 
+</form>
+
+<p *ngIf="isFetching">Processing...</p>
+<p *ngIf="msg">{{msg}}</p>
+<p *ngIf="!isFetching && !msg">Database Down!</p>
+
+<a href="/actors" class="back_link">Back to Actors</a>

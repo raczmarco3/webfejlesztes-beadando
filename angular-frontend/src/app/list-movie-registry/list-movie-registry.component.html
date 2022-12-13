@@ -1,0 +1,24 @@
+<h1>{{movie.title}} Actors:</h1>
+
+<table *ngIf="movie">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Birth Date</th>
+        <th>Birthplace</th>
+    </tr>
+    <tr *ngIf="actors.length < 1 && !isFetching">
+        <td colspan="4">No Actors Available!</td>
+    </tr>    
+    <tr *ngIf="isFetching">
+        <td colspan="4">Loading..</td>
+    </tr>
+    <tr *ngFor="let actor of actors">
+        <td>{{actor.id}}</td>
+        <td>{{actor.name}}</td>
+        <td>{{actor.birthDate}}</td>
+        <td>{{actor.birthPlace}}</td>
+    </tr>        
+</table>
+<p *ngIf="msg">{{msg}}</p>
+<a href="/movies" class="link_button">Back to Movies</a>

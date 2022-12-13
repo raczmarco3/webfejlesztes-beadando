@@ -1,0 +1,6 @@
+td a {
+    color:black;
+}
+td a:hover {
+    color:grey;
+}

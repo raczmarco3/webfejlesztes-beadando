@@ -1,0 +1,22 @@
+<h1>Genres: </h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th class="action_button_column"></th>
+        <th class="action_button_column"></th>
+    </tr>
+    <tr *ngIf="genres.length < 1 && !isFetching">
+        <td colspan="4">No Genres Available!</td>
+    </tr>    
+    <tr *ngIf="isFetching">
+        <td colspan="4">Loading..</td>
+    </tr>
+    <tr *ngFor="let genre of genres">
+        <td>{{genre.id}}</td>
+        <td>{{genre.name}}</td>
+        <td><a href="/genre/delete/{{genre.id}}" class="action_button">Delete</a></td>
+        <td><a href="/genre/edit/{{genre.id}}" class="action_button">Edit</a></td>
+    </tr>        
+</table>
+<a href="/genre/add" class="link_button">Add Genre</a>
